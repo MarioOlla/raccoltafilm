@@ -61,7 +61,23 @@ public class RegistaServiceImpl implements RegistaService {
 
 	@Override
 	public void aggiorna(Regista registaInstance) throws Exception {
-		// TODO Auto-generated method stub
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+
+			registaDAO.setEntityManager(entityManager);
+
+			registaDAO.update(registaInstance);
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 
 	}
 

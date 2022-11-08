@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.utility.UtilityForm;
 
 @WebServlet("/ExecuteSearchFilmServlet")
 public class ExecuteSearchFilmServlet extends HttpServlet {
@@ -25,10 +26,16 @@ public class ExecuteSearchFilmServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String titoloParam = request.getParameter("titolo");
+		String categoriaParam = request.getParameter("categoria");
+		String dataPubblicazioneParam = request.getParameter("dataPubblicazione");
+		String minutiDurataParam = request.getParameter("minutiDurata");
+		String registaIdParam = request.getParameter("regista.id");
+		
 		// da implementare
-		Film example = new Film();
-
+		Film example = UtilityForm.createFilmFromParams(titoloParam, categoriaParam, minutiDurataParam, dataPubblicazioneParam,registaIdParam);
+		
+		
 		try {
 			request.setAttribute("film_list_attribute", filmService.findByExample(example));
 		} catch (Exception e) {
