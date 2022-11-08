@@ -1,4 +1,4 @@
-package it.prova.raccoltafilm.dao;
+	package it.prova.raccoltafilm.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +35,10 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public void update(Film filmInstance) throws Exception {
-		// TODO Auto-generated method stub
+		if (filmInstance == null) {
+			throw new Exception("Problema valore in input");
+		}
+		filmInstance = entityManager.merge(filmInstance);
 
 	}
 

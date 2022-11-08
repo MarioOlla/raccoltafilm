@@ -61,7 +61,6 @@ public class ExecuteUpdateRegistaServlet extends HttpServlet {
 		}
 		
 		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
-		throw new ElementNotFoundException("non sono riuscito a cercare con l'id ");
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import it.prova.raccoltafilm.dao.RegistaDAO;
+import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.web.listener.LocalEntityManagerFactoryListener;
 
@@ -67,7 +68,8 @@ public class RegistaServiceImpl implements RegistaService {
 			entityManager.getTransaction().begin();
 
 			registaDAO.setEntityManager(entityManager);
-
+			if(registaInstance.getId() == null || registaInstance.getId() < 1)
+				throw new ElementNotFoundException("Errore durante l'aggiornamento, id non valido o mancante.");
 			registaDAO.update(registaInstance);
 
 			entityManager.getTransaction().commit();
