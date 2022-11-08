@@ -44,7 +44,7 @@ public class RegistaServiceImpl implements RegistaService {
 		try {
 			registaDAO.setEntityManager(entityManager);
 			
-			return registaDAO.findOne(id).get();
+			return (Regista)registaDAO.findOne(id).get();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
