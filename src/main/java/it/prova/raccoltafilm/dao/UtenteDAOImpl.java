@@ -98,7 +98,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 		Map<String, Object> parameterMap = new HashMap<>();
 		List<String> whereClauses = new ArrayList<>();
 
-		StringBuilder queryBuilder = new StringBuilder("from User u where u.id=u.id ");
+		StringBuilder queryBuilder = new StringBuilder("from Utente u where u.id=u.id ");
 
 		if (StringUtils.isNotBlank(example.getUsername())) {
 			whereClauses.add("u.username like :username");
