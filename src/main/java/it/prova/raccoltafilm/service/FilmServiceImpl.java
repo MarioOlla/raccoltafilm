@@ -85,7 +85,8 @@ public class FilmServiceImpl implements FilmService {
 			entityManager.getTransaction().begin();
 
 			filmDAO.setEntityManager(entityManager);
-
+			if (filmInstance == null)
+				throw new ElementNotFoundException("Film da aggiornare non trovato.");
 			filmDAO.update(filmInstance);
 
 			entityManager.getTransaction().commit();

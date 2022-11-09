@@ -33,8 +33,9 @@ public class ExecuteListRegistaServlet extends HttpServlet {
 			if (StringUtils.isNotBlank(operationResult) && operationResult.equalsIgnoreCase("SUCCESS"))
 				request.setAttribute("successMessage", "Operazione effettuata con successo");
 			else if(StringUtils.isNotBlank(operationResult)&& operationResult.equalsIgnoreCase("NOT_FOUND"))
-				request.setAttribute("", operationResult);
-			//altre chiamate di eccezioni
+				request.setAttribute("errorMessage", "Operazione fallita, non ho trovato il regista che serviva.");
+			else if(StringUtils.isNotBlank(operationResult) && operationResult.equalsIgnoreCase("REGISTA_WITH_FILMS"))
+				request.setAttribute("errorMessage", "Impossibile rimuovere regista, ci sono ancora suoi film in DB.");
 			request.setAttribute("registi_list_attribute", registaService.listAllElements());
 		} catch (Exception e) {
 			e.printStackTrace();

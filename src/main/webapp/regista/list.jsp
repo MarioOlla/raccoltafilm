@@ -25,6 +25,10 @@
 				  ${successMessage}
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
 				</div>
+				<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none':'' }" role="alert">
+				  ${errorMessage}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+				</div>
 				<div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
 				  Esempio di operazione fallita!
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
@@ -66,7 +70,7 @@
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaRegistaServlet?idRegista=${registaItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateRegistaServlet?idRegista=${registaItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="laservletperrimuovere">Delete</a>
+												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteRegistaServlet?idRegista=${registaItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>

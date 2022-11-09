@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
 import it.prova.raccoltafilm.model.Film;
 
 public class FilmDAOImpl implements FilmDAO {
@@ -36,7 +37,7 @@ public class FilmDAOImpl implements FilmDAO {
 	@Override
 	public void update(Film filmInstance) throws Exception {
 		if (filmInstance == null) {
-			throw new Exception("Problema valore in input");
+			throw new ElementNotFoundException("Attenzione, il film da aggiornare non esiste");
 		}
 		filmInstance = entityManager.merge(filmInstance);
 
