@@ -27,4 +27,6 @@ public interface UtenteService  {
 	//per injection
 	public void setUtenteDAO(UtenteDAO utenteDAO);
 
+	public List<Utente> findUtenteByExample(Utente example) throws Exception;
+
 }

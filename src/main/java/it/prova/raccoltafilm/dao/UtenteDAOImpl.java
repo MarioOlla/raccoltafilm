@@ -1,11 +1,17 @@
 package it.prova.raccoltafilm.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.apache.commons.lang3.StringUtils;
+
+import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.model.Ruolo;
 import it.prova.raccoltafilm.model.StatoUtente;
 import it.prova.raccoltafilm.model.Utente;
@@ -86,4 +92,39 @@ public class UtenteDAOImpl implements UtenteDAO {
 		return query.getResultStream().findFirst();
 	}
 
+	@Override
+	public List<Utente> findByExample(Utente example) throws Exception {
+
+		Map<String, Object> parameterMap = new HashMap<>();
+		List<String> whereClauses = new ArrayList<>();
+
+		StringBuilder queryBuilder = new StringBuilder("from User u where u.id=u.id ");
+
+		if (StringUtils.isNotBlank(example.getUsername())) {
+			whereClauses.add("u.username like :username");
+			parameterMap.put("username", "%"+example.getUsername()+"%");
+		}
+		if (StringUtils.isNotBlank(example.getNome())) {
+			whereClauses.add("u.nome like :nome");
+			parameterMap.put("nome","%"+example.getNome()+"%");
+		}
+		if (StringUtils.isNotBlank(example.getCognome())) {
+			whereClauses.add("u.cognome like :cognome");
+			parameterMap.put("cognome","%"+example.getCognome()+"%");
+		}
+		if (example.getDateCreated() != null) {
+			whereClauses.add("u.dateCreated >= :dateCreated");
+			parameterMap.put("dateCreated", example.getDateCreated() );
+		}
+
+		queryBuilder.append(!whereClauses.isEmpty()?" and ":"");
+		queryBuilder.append(StringUtils.join(whereClauses, " and "));
+		TypedQuery<Utente> typedQuery = entityManager.createQuery(queryBuilder.toString(), Utente.class);
+		
+		for (String key : parameterMap.keySet()) {
+			typedQuery.setParameter(key, parameterMap.get(key));
+		}
+		
+		return typedQuery.getResultList();
+	}
 }
