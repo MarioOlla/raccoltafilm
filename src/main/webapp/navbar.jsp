@@ -29,7 +29,10 @@
               
               <%-- QUESTO LINK SERVE SOLO PER DIMOSTRARE COME GESTIRE LA COMPARSA/SCOMPARSA IN BASE AL RUOLO --%>
               <c:if test="${userInfo.isAdmin() }">
-              	<li><a class="dropdown-item" href="/PrepareSearchUtenteServlet">Link che appare solo se sei ADMIN</a></li>
+              	<li><a class="dropdown-item" href="user/PrepareSearchUtenteServlet">Cerca Utente</a></li>
+              </c:if>
+              <c:if test="${userInfo.isAdmin() }">
+              	<li><a class="dropdown-item" href="user/PrepareInsertUtenteServlet">Inserisci Utente</a></li>
               </c:if>
             </ul> 
           </li>   

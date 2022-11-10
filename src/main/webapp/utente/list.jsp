@@ -46,7 +46,7 @@
 				                        <th>Nome</th>
 				                        <th>Cognome</th>
 				                        <th>Data di Creazione</th>
-				                        <!-- <th>Azioni</th> -->
+				                        <th>Azioni</th>
   
 				                    </tr>
 				                </thead>
@@ -58,19 +58,19 @@
 											<td>${utenteItem.cognome }</td>
 											<td><fmt:formatDate type = "date" value = "${utenteItem.dateCreated }" /></td>
 											
-											 <!-- 
+											 
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaFilmServlet?idFilm=${filmItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateFilmServlet?idFilm=${filmItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteFilmServlet?idFilm=${filmItem.id }">Delete</a>
+												<a class="btn  btn-sm btn-outline-secondary" href="user/ExecuteShowUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateFilmilm=${filmItem.id }">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="user/PrepareDeleteFilmSlm=${Item.id }">Delete</a>
 											</td>
-											-->
+											
 										</tr>
 									</c:forEach>
 				                </tbody>
 				            </table>
 				        </div>
-				   		<a class="btn btn-primary " href="HomeServlet">To homepage</a>
+				   		<a class="btn btn-primary " href="../home">To homepage</a>
 					<!-- end card-body -->			   
 			    </div>
 			<!-- end card -->

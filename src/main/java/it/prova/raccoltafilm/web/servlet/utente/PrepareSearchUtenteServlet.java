@@ -11,7 +11,7 @@ import it.prova.raccoltafilm.dao.UtenteDAO;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 import it.prova.raccoltafilm.service.UtenteService;
 
-@WebServlet("/PrepareSearchUtenteServlet")
+@WebServlet("/user/PrepareSearchUtenteServlet")
 public class PrepareSearchUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

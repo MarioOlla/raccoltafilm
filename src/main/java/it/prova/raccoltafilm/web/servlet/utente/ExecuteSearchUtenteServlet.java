@@ -15,7 +15,7 @@ import it.prova.raccoltafilm.utility.UtilityForm;
 /**
  * Servlet implementation class ExecuteSearchUtenteServlet
  */
-@WebServlet("/ExecuteSearchUtenteServlet")
+@WebServlet("/user/ExecuteSearchUtenteServlet")
 public class ExecuteSearchUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtenteService utenteService;
@@ -26,7 +26,7 @@ public class ExecuteSearchUtenteServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String usernameParam = request.getParameter("nome");
+		String usernameParam = request.getParameter("username");
 		String nomeParam = request.getParameter("nome");
 		String cognomeParam = request.getParameter("cognome");
 		String dateCreatedParam = request.getParameter("dateCreated");
@@ -38,9 +38,9 @@ public class ExecuteSearchUtenteServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore, chissà che errore è...");
-			request.getRequestDispatcher("/utente/search.jsp").forward(request, response);
+			request.getRequestDispatcher("./utente/search.jsp").forward(request, response);
 			return;
 		}
-		request.getRequestDispatcher("/utente/list.jsp").forward(request, response);
+		request.getRequestDispatcher("../utente/list.jsp").forward(request, response);
 	}
 }

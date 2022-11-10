@@ -20,4 +20,6 @@ public interface RuoloService {
 
 	// per injection
 	public void setRuoloDAO(RuoloDAO ruoloDAO);
+
+	public List<Ruolo> findGroupByIds(List<Long> idRuoliUtente) throws Exception;
 }

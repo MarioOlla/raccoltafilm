@@ -29,7 +29,7 @@
 				    </div>
 				    <div class='card-body'>
 		
-							<form method="post" action="ExecuteSearchUtenteServlet" class="row g-3" >
+							<form method="post" action="../user/ExecuteSearchUtenteServlet" class="row g-3" >
 							
 							
 								<div class="col-md-6">

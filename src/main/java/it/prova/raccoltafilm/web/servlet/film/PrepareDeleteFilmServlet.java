@@ -14,7 +14,7 @@ import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
-@WebServlet("/PrepareDeleteFilmServlet")
+@WebServlet("/user/PrepareDeleteFilmServlet")
 public class PrepareDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class PrepareDeleteFilmServlet extends HttpServlet {
 			return;
 		}
 
-		request.getRequestDispatcher("/film/delete.jsp").forward(request, response);
+		request.getRequestDispatcher("//film/delete.jsp").forward(request, response);
 	}
 
 }

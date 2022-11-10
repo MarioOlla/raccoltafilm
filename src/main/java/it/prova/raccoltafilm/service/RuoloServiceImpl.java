@@ -14,8 +14,21 @@ public class RuoloServiceImpl implements RuoloService {
 
 	@Override
 	public List<Ruolo> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			ruoloDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return ruoloDAO.list();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override
@@ -92,6 +105,25 @@ public class RuoloServiceImpl implements RuoloService {
 
 			// eseguo quello che realmente devo fare
 			return ruoloDAO.findByDescrizioneAndCodice(descrizione, codice);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public List<Ruolo> findGroupByIds(List<Long> idsRuoliUtente) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			ruoloDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return ruoloDAO.findRuoliWithIdIn(idsRuoliUtente);
 
 		} catch (Exception e) {
 			e.printStackTrace();

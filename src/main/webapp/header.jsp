@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" >
+<link href="../raccoltafilm/assets/css/bootstrap.min.css" rel="stylesheet" >
 
  <!-- Favicons -->
 <link rel="icon" href="./assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -30,12 +30,12 @@
 
 
 <!-- Custom styles for this template -->
-<link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
+<link href="../raccoltafilm/assets/css/sticky-footer-navbar.css" rel="stylesheet">
 
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="assets/js/bootstrap.bundle.min.js" ></script>
+<script src="../raccoltafilm/assets/js/bootstrap.bundle.min.js" ></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--

@@ -20,7 +20,7 @@ public class CheckAuthFilter implements Filter {
 
 	private static final String HOME_PATH = "";
 	private static final String[] EXCLUDED_URLS = {"/login.jsp","/LoginServlet","/LogoutServlet","/assets/"};
-	private static final String[] PROTECTED_URLS = {"/users/","/delete.jsp","/ExecuteDeleteRegistaServlet","/PrepareDeleteRegistaServlet","/ExecuteDeleteFilmServlet","/PrepareDeleteFilmServlet"};
+	private static final String[] PROTECTED_URLS = {"/users/"};
 
 	public CheckAuthFilter() {
 	}
@@ -50,7 +50,7 @@ public class CheckAuthFilter implements Filter {
 			}
 			//controllo che utente abbia ruolo admin se nel path risulta presente /admin/
 			if(isPathForOnlyAdministrators(pathAttuale) && !utenteInSession.isAdmin()) {
-				httpRequest.setAttribute("messaggio", "Non si è autorizzati alla navigazione richiesta");
+				httpRequest.setAttribute("errorMessage", "Non si è autorizzati alla navigazione richiesta");
 				httpRequest.getRequestDispatcher("/home").forward(httpRequest, httpResponse);
 				return;
 			}
